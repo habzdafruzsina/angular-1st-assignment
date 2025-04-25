@@ -1,0 +1,26 @@
+
+<form [formGroup]="nameForm" (ngSubmit)="submitName()">
+    <label>
+        Titulus: <input type="string" formControlName="title"/>
+    </label>
+    <label>
+        Keresztnév: <input type="string" formControlName="first_name" required/>
+    </label>
+    <label>
+        Középső név: <input type="string" formControlName="middle_name"/>
+    </label>
+    <label>
+        Vezeték név: <input type="string" formControlName="last_name" required/>
+    </label>
+    <button [disabled]="!nameForm.valid" nz-button>Elment</button>
+</form>
+
+<p>Név lista (Angol változat):</p>
+@for (name of names; track $index) {
+    <p>{{ name | namePipe: Language.EN}}</p>
+}
+
+<p>Név lista (Magyar változat):</p>
+@for (name of names; track $index) {
+    <p>{{ name | namePipe: Language.HU}}</p>
+}

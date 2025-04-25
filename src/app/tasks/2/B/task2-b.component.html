@@ -1,0 +1,8 @@
+<app-product-list
+    [productList]="productList"
+    (productAddClickedEvent)="addProductToBasket($event)"
+></app-product-list>
+
+<h3>Kosár</h3>
+
+<app-basket #basketRef></app-basket>

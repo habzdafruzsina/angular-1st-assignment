@@ -1,0 +1,34 @@
+@for (product of productList; track product.name) {
+
+  <nz-card style="width:300px;"
+          [nzCover]="coverTemplate">
+    <nz-card-meta [nzTitle]="titleTemplate"
+                  [nzDescription]="descriptionTemplate"></nz-card-meta>
+  </nz-card>
+
+  <ng-template #coverTemplate>
+    <img *ngIf="product.image"
+        [alt]="product.name"
+        [src]="product.image"/>
+  </ng-template>
+
+  <ng-template #descriptionTemplate>
+    <div>
+      {{ product.description }}
+    </div>
+    <div>
+      {{ product.price }} Ft
+    </div>
+    <div>
+      <button nz-button nzType="primary" nzSize="large" (click)="productAddClickedEmit(product)">
+        Kosárba
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template #titleTemplate>
+    {{ product.name }}
+  </ng-template>
+
+
+}

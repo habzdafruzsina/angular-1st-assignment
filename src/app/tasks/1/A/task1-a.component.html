@@ -1,0 +1,31 @@
+<div *ngIf="isWon" class="congratsDir">Gratulálok! Nyertél!</div>
+
+@for (row of labyrinth?.matrix; track rowIndex; let rowIndex = $index) {
+  <div class="row">
+  @for (tile of row; track colIndex; let colIndex = $index) {
+    @if (rowIndex === (rows) && colIndex === 0) {
+      <div class="cell">
+        <img src="/assets/images/tasks/1/A/labyrinth/entrance.jpg"/>
+      </div>
+    } @else if (rowIndex === 0 && colIndex === (cols-1)) {
+      <div class="cell">
+        <img src="/assets/images/tasks/1/A/labyrinth/exit.jpg"/>
+      </div>
+    } @else {
+      <div class="cell" (click)="changeTile(rowIndex, colIndex)">
+        <img [src]="TileDetails[tile].src"/>
+      </div>
+    }
+  }
+  </div>
+}
+
+<form [formGroup]="sizeForm" (ngSubmit)="createLabyrinth()">
+  <label>
+    Sorok: <input type="number" formControlName="numberOfRows" min="3" required/>
+  </label>
+  <label>
+    Oszlopok: <input type="number" formControlName="numberOfCols" min="3" required/>
+  </label>
+  <button type="submit">Készíts pályát!</button>
+</form>

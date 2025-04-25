@@ -1,0 +1,33 @@
+<p>task5-b works!</p>
+
+<input nz-input placeholder="Szűrés" [(ngModel)]="filterStr" (ngModelChange)="onFilterChange($event)" type="string" />
+
+<nz-table 
+    #virtualTable
+    [nzData]="filteredPeople"
+    [nzVirtualItemSize]="50"
+    [nzBordered]="true"
+    [nzVirtualForTrackBy]="trackByIndex"
+    [nzFrontPagination]="false"
+    [nzShowPagination]="false"
+    [nzScroll]="{ x: '240px', y: '240px' }">
+    <thead>
+        <tr>
+        <th>Név</th>
+        <th>Születési év</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-template nz-virtual-scroll let-data let-index="index">
+        <tr>
+        <td>
+            <button [nzTooltipTitle]="data.address" nzTooltipPlacement="top" nz-button nz-tooltip>
+                <nz-icon nzType="home" nzTheme="outline" />
+            </button>
+            {{data.name}}
+        </td>
+        <td>{{data.year_of_birth}}</td>
+    </tr>
+        </ng-template>
+    </tbody>
+</nz-table>
