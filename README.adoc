@@ -1,3 +1,5 @@
+The base of the application and the paging was made by my teacher, Balázs Barnabás Lóránt.
+
 = Choose your own +++<s>adventure</s>+++ beadando
 
 == Feladatok
